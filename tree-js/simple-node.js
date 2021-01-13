@@ -58,7 +58,7 @@ class SimpleNode {
             );
         } else {
             // return ready flag
-            return this.ready;
+            return this.ready && this.isReady;
         }
     }
 }
