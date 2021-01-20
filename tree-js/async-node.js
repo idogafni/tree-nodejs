@@ -3,11 +3,10 @@ const SimpleNode = require('./simple-node');
 class AsyncNode extends SimpleNode {
 
     whenReadyCallbacks;
-    
-    constructor (...args) {
-       super(...args);
-        this.whenReadyCallbacks = [];
 
+    constructor (...args) {
+        super(...args);
+        this.whenReadyCallbacks = [];
     }
 
     /**
@@ -17,7 +16,6 @@ class AsyncNode extends SimpleNode {
     onResourceReady (value) {
         // implement
         this.ready = true;
-
         this.runReadyCallbacks();
     }
 
@@ -44,11 +42,10 @@ class AsyncNode extends SimpleNode {
      */
     whenReady (callback) {
         this.addCallback(callback);
-        
         const promises = this.childs.map(child =>
             new Promise((resolve) => child.whenReady( () => resolve(child) ))
         );
-        Promise.all(promises).then(() =>this.runReadyCallbacks() );
+        Promise.all(promises).then(() => this.runReadyCallbacks() );
     }
 
     addCallback(callback) {
