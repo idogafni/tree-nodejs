@@ -14,7 +14,6 @@ class AsyncNode extends SimpleNode {
      * @param {string} value the resource payload (can be left unused for the scope of the assignment)
      */
     onResourceReady (value) {
-        // implement
         this.ready = true;
         this.runReadyCallbacks();
     }
